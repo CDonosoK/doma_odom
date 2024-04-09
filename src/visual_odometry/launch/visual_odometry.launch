@@ -1,0 +1,31 @@
+<launch>
+    <!-- Cargar los parámetros desde el archivo YAML -->
+    <rosparam command="load" file="$(find doma_odom)/src/visual_odometry/config/usb_camera.yaml" />
+
+    <node
+        name = "doma_visual_odometry_node_castacks" 
+        pkg = "doma_odom"
+        type = "visual_odometry_castacks.py"
+        output = "screen"
+    >
+        <rosparam param="image_width">${arg image_width}</rosparam>
+        <rosparam param="image_height">${arg image_height}</rosparam>
+        <rosparam param="camera_matrix">${arg camera_matrix}</rosparam>
+        <rosparam param="distortion_coefficients">${arg distortion_coefficients}</rosparam>
+        <rosparam param="projection_matrix">${arg projection_matrix}</rosparam>
+    </node>
+
+    <node
+        name = "doma_visual_odometry_node_nielsen" 
+        pkg = "doma_odom"
+        type = "visual_odometry_nielsen.py"
+        output = "screen"
+    >
+        <rosparam param="image_width">${arg image_width}</rosparam>
+        <rosparam param="image_height">${arg image_height}</rosparam>
+        <rosparam param="camera_matrix">${arg camera_matrix}</rosparam>
+        <rosparam param="distortion_coefficients">${arg distortion_coefficients}</rosparam>
+        <rosparam param="projection_matrix">${arg projection_matrix}</rosparam>
+    </node>
+
+</launch>
