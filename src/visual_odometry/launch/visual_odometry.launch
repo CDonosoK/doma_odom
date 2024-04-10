@@ -2,6 +2,13 @@
     <!-- Cargar los parámetros desde el archivo YAML -->
     <rosparam command="load" file="$(find doma_odom)/src/visual_odometry/config/usb_camera.yaml" />
 
+     <node
+        name = "doma_cammera_node" 
+        pkg = "doma_odom"
+        type = "camera_publisher.py"
+        output = "screen"
+    />
+
     <node
         name = "doma_visual_odometry_node_castacks" 
         pkg = "doma_odom"
