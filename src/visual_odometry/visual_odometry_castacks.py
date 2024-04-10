@@ -136,7 +136,7 @@ class VisualOdometry:
                         points1 = np.float32([key_points1[m.queryIdx].pt for m in matches])
                         points2 = np.float32([key_points2[m.trainIdx].pt for m in matches])
 
-                        E, mask = cv2.findEssentialMat(points1, points2, focal=self.fx, pp=(self.cx, self.cy), method=cv2.RANSAC, prob=0.999, threshold=1.0)
+                        E, mask = cv2.findEssentialMat(points1, points2, focal=self.fx, pp=(self.cx, self.cy), method=cv2.RANSAC, prob=0.999, threshold=5.0)
                         points1 = points1[mask.ravel() == 1]
                         points2 = points2[mask.ravel() == 1]
                         _, R, t, mask = cv2.recoverPose(E, points1, points2, focal=self.fx, pp=(self.cx, self.cy))
