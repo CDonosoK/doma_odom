@@ -5,7 +5,7 @@
      <node
         name = "doma_cammera_node" 
         pkg = "doma_odom"
-        type = "camera_publisher.py"
+        type = "camera.py"
         output = "screen"
     />
 
